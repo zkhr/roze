@@ -65,6 +65,9 @@ a {
   color: #00aff4;
   cursor: pointer;
   text-decoration: none;
+}
+
+a.long {
   word-break: break-all;
 }
 
