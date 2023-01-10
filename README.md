@@ -124,6 +124,6 @@ You should now be able to start the applicatoing:
 npm start
 ```
 
-Once it is running, you can add the interactions endpoint URL in the Discord Developer Console for your application and save. This should be the route you set up in your nginx config (or other server) with the `/interactions` path. For example, `https://roze.run/interactions`.
+Once it is running, you can add the interactions endpoint URL in the Discord Developer Console for your application and save. This should be the route you set up in your nginx config (or other server) with the `/discord` path. For example, `https://roze.run/discord`.
 
 You can now add the bot to your server and try it out. See https://roze.run for usage details. You'll need to change paths accordingly for the domain that you are using.
