@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Privacy Policy for roze.run bot</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="stylesheet" href="/roze.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="content">
+      <div class="title">Privacy Policy</div>
+      <div class="description">
+        For details on what data we collect, the permissions we need and why.
+      </div>
+
+      <div class="message-wrapper">
+        <img class="avatar" src="/profile-zkhr.png" />
+        <div class="message">
+          <div class="name">zkhr</div>
+          <div class="text">
+            Adding roze to your server is done via
+            <a href="https://roze.run/new">https://roze.run/new</a>, which is
+            just a redirect to
+            <a
+              href="https://discord.com/api/oauth2/authorize?client_id=1061061998286225458&permissions=2048&scope=bot%20applications.commands"
+              >https://discord.com/api/oauth2/authorize?client_id=1061061998286225458&permissions=2048&scope=bot%20applications.commands</a
+            >.
+          </div>
+        </div>
+      </div>
+
+      <div class="message-wrapper">
+        <img class="avatar" src="/profile-zkhr.png" />
+        <div class="message">
+          <div class="name">zkhr</div>
+          <div class="text">Let's break this URL down.</div>
+          <div class="text">
+            The <span class="code">client_id=1061061998286225458</span> refers
+            to the <span class="emphasis">roze.run</span> application, which
+            you'll be granting access.
+          </div>
+          <div class="text">
+            The <span class="code">permissions=2048</span> is @roze asking for
+            the <span class="emphasis">Send Messages</span> bot permission.
+          </div>
+          <div class="text">
+            <span class="emphasis">Send Messages</span> is used so that @roze
+            can let you know when it is your turn. Without this, she can't do
+            too much.
+          </div>
+          <div class="text">
+            The
+            <span class="code">scope=bot%20applications.commands</span> enables
+            the <span class="emphasis">bot</span> and
+            <span class="emphasis">application.command</span> scopes.
+          </div>
+          <div class="text">
+            <span class="emphasis">bot</span> scope enables using the bot user
+            (@roze).
+          </div>
+          <div class="text">
+            <span class="emphasis">application.command</span> allows @roze to
+            add the <span class="code">/civ</span> commands for registering a
+            channel and adding player aliases.
+          </div>
+        </div>
+      </div>
+
+      <div class="message-wrapper">
+        <img class="avatar" src="/profile-zkhr.png" />
+        <div class="message">
+          <div class="name">zkhr</div>
+          <div class="text">
+            So, once @roze has been added to your server, what data do we
+            collect?
+          </div>
+          <div class="text">
+            Well, this app is backed by a PostgreSQL database that only has two
+            tables.
+          </div>
+          <div class="text">
+            The first table, <span class="code">Channels</span> stores the id of
+            your channel, the id we generate for your webhook, and a timestamp.
+          </div>
+        </div>
+      </div>
+
+      <div class="message-wrapper">
+        <img class="avatar" src="/profile-roze.png" />
+        <div class="message">
+          <div class="name">roze</div>
+          <div class="text">
+            These let me know which channel to message when game updates are
+            received by Civ.
+          </div>
+        </div>
+      </div>
+
+      <div class="message-wrapper">
+        <img class="avatar" src="/profile-zkhr.png" />
+        <div class="message">
+          <div class="name">zkhr</div>
+          <div class="text">
+            The second table, <span class="code">Users</span> stores the id of
+            your channel, the username that is being aliased, the id of your
+            discord account, and a timestamp again.
+          </div>
+        </div>
+      </div>
+
+      <div class="message-wrapper">
+        <img class="avatar" src="/profile-roze.png" />
+        <div class="message">
+          <div class="name">roze</div>
+          <div class="text">
+            These let me track who to @mention in a channel.
+          </div>
+        </div>
+      </div>
+
+      <div class="message-wrapper">
+        <img class="avatar" src="/profile-zkhr.png" />
+        <div class="message">
+          <div class="name">zkhr</div>
+          <div class="text">
+            The timestamps are just so I can keep track of how often this bot is
+            being used.
+          </div>
+          <div class="text">
+            If I start tracking any additional information in these tables, I
+            will update this privacy policy with that info.
+          </div>
+          <div class="text">
+            If you ever want me to delete any of your data for any reason, just
+            message me on roze's discord server at
+            <a href="https://discord.gg/mUFMbm3SFr">discord.gg/mUFMbm3SFr</a>.
+          </div>
+        </div>
+      </div>
+
+      <div class="message-wrapper">
+        <img class="avatar" src="/profile-zkhr.png" />
+        <div class="message">
+          <div class="text">
+            My server also collects some standard information in its access logs
+            (e.g. IP address, the date, time, and referrer URL of your request,
+            etc).
+          </div>
+          <div class="text">
+            Let me know if you have any questions or want any other details. You
+            can also check out the source on github at
+            <a href="https://github.com/zkhr/rose">zkhr/roze</a> to build the
+            bot yourself (in which case, I won't collect any of your data).
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
