@@ -118,7 +118,7 @@ npm install
 
 Next, copy the `.env.sample` over to `.env` and fill in the variables you got from the prereqs above.
 
-You should now be able to start the applicatoing:
+You should now be able to start the application:
 
 ```
 npm start
