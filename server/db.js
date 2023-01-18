@@ -21,10 +21,8 @@ const pool = new Pool({
 });
 
 /** Adds a mapping from steam username to discord id for the user. */
-async function addUser(channelId, steamName, discordId, db = undefined) {
-  if (!db) {
-    db = await pool.connect();
-  }
+async function addUser(channelId, steamName, discordId) {
+  const db = await pool.connect();
 
   try {
     await db.query(
@@ -33,14 +31,14 @@ async function addUser(channelId, steamName, discordId, db = undefined) {
     );
   } catch (e) {
     console.log(e);
+  } finally {
+    db.release();
   }
 }
 
 /** Updates a mapping from steam username to discord id for the user. */
-async function updateUser(channelId, steamName, discordId, db = undefined) {
-  if (!db) {
-    db = await pool.connect();
-  }
+async function updateUser(channelId, steamName, discordId) {
+  const db = await pool.connect();
 
   try {
     await db.query(
@@ -49,19 +47,20 @@ async function updateUser(channelId, steamName, discordId, db = undefined) {
     );
   } catch (e) {
     console.log(e);
+  } finally {
+    db.release();
   }
 }
 
 /** Returns the user id if present, or null if not found. */
-async function getDiscordId(channelId, steamName, db = undefined) {
-  if (!db) {
-    db = await pool.connect();
-  }
+async function getDiscordId(channelId, steamName) {
+  const db = await pool.connect();
 
   const response = await db.query(
     "SELECT discord_id FROM Users WHERE channel_id=$1 AND steam_name=$2",
     [channelId, steamName]
   );
+  db.release();
   if (!response.rows.length) {
     return null;
   }
@@ -70,16 +69,13 @@ async function getDiscordId(channelId, steamName, db = undefined) {
 }
 
 /** Adds a new channel. Returns the roze id for that channel. */
-async function addChannel(channelId, db = undefined) {
-  if (!db) {
-    db = await pool.connect();
-  }
-
-  const existingChannel = await getChannelByChannelId(channelId, db);
+async function addChannel(channelId) {
+  const existingChannel = await getChannelByChannelId(channelId);
   if (existingChannel) {
     return existingChannel;
   }
 
+  const db = await pool.connect();
   const rozeId = genRozeId();
   try {
     await db.query(
@@ -89,21 +85,22 @@ async function addChannel(channelId, db = undefined) {
     return { channelId, rozeId };
   } catch (e) {
     console.log(e);
+  } finally {
+    db.release();
   }
 
   return null;
 }
 
 /** Returns the channel id if present by the channel id, or null if not found. */
-async function getChannelByChannelId(channelId, db = undefined) {
-  if (!db) {
-    db = await pool.connect();
-  }
+async function getChannelByChannelId(channelId) {
+  const db = await pool.connect();
 
   const response = await db.query(
     "SELECT channel_id, roze_id FROM Channels WHERE channel_id=$1",
     [channelId]
   );
+  db.release();
   if (!response.rows.length) {
     return null;
   }
@@ -116,15 +113,14 @@ async function getChannelByChannelId(channelId, db = undefined) {
 }
 
 /** Returns the channel id if present by the roze id, or null if not found. */
-async function getChannelByRozeId(rozeId, db = undefined) {
-  if (!db) {
-    db = await pool.connect();
-  }
+async function getChannelByRozeId(rozeId) {
+  const db = await pool.connect();
 
   const response = await db.query(
     "SELECT channel_id, roze_id FROM Channels WHERE roze_id=$1",
     [rozeId]
   );
+  db.release();
   if (!response.rows.length) {
     return null;
   }
