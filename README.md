@@ -11,7 +11,7 @@ roze.run is primarily a Node.js app in server/ that has two main responsibilitie
 1. It receives update from a Civ 6 game when users have taken their turn.
 2. It controls a Discord Bot that can relay those messages to users.
 
-There is also some minimal static content in www/ that is served at https://roze.run, a PostgresSQL DB that keeps track of some minimal information to know which discord servers to send which messages to, and optinally some nginx config (or your server of choice) to route requests to the Node.js app.
+There is also some minimal static content in www/ that is served at https://roze.run, a PostgresSQL DB that keeps track of some minimal information to know which discord servers to send which messages to, a daily cronjob in batch/ that deletes data when users remove @roze from their server, and optionally some nginx config (or your server of choice) to route requests to the Node.js app.
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ $ createdb <db>
 $ createuser <user> --pwprompt
 ```
 
-After settting this up, you should have your `POSTGRES_HOST`, `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, and `POSTGRES_PORT`.
+After setting this up, you should have your `POSTGRES_HOST`, `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, and `POSTGRES_PORT`.
 
 Finally, choose the port that you want to run your Node.js app on. This will be your `PORT`.
 

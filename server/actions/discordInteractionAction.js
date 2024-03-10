@@ -37,7 +37,10 @@ async function handleApplicationCommands(request, response) {
 }
 
 async function handleStartCommand(request, response) {
-  const channel = await addChannel(request.body.channel_id);
+  const channel = await addChannel(
+    request.body.guild_id,
+    request.body.channel_id
+  );
   if (channel === null) {
     return loggedError(response, "Error starting. Please try again.");
   }

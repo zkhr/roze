@@ -69,7 +69,7 @@ async function getDiscordId(channelId, steamName) {
 }
 
 /** Adds a new channel. Returns the roze id for that channel. */
-async function addChannel(channelId) {
+async function addChannel(guildId, channelId) {
   const existingChannel = await getChannelByChannelId(channelId);
   if (existingChannel) {
     return existingChannel;
@@ -79,8 +79,8 @@ async function addChannel(channelId) {
   const rozeId = genRozeId();
   try {
     await db.query(
-      "INSERT INTO Channels(channel_id, roze_id) VALUES ($1, $2)",
-      [channelId, rozeId]
+      "INSERT INTO Channels(channel_id, guild_id, roze_id) VALUES ($1, $2, $3)",
+      [channelId, guildId, rozeId]
     );
     return { channelId, rozeId };
   } catch (e) {
