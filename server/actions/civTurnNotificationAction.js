@@ -26,7 +26,7 @@ async function civTurnNotificationAction(request, response) {
 }
 
 function getRandomTurnNotifcation(user) {
-  const index = Math.floor(Math.random() * 10); // Random # from 0 to 9.
+  const index = Math.floor(Math.random() * 17); // Random # from 0 to 16.
   switch (index) {
     case 0:
       return `${user} it's your turn`;
@@ -48,6 +48,20 @@ function getRandomTurnNotifcation(user) {
       return `has anyone seen ${user}? their turn to play.`;
     case 9:
       return `good luck ${user}, it's your move`;
+    case 10:
+      return `take it away, ${user}`;
+    case 11:
+      return `tick tock it's ${user} o'clock`;
+    case 12:
+      return `brace yourselves, it's time for ${user}`;
+    case 13:
+      return `time to shine, ${user}!`;
+    case 14:
+      return `attention ${user}, it is your turn. I repeat, it is your turn.`;
+    case 15:
+      return `it's go time, ${user}`;
+    case 16:
+      return `no pressure, ${user}, but you're up`;
   }
   return "something went wrong, but anyways, it's ${user}'s turn.";
 }
