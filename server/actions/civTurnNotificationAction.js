@@ -21,50 +21,51 @@ async function civTurnNotificationAction(request, response) {
   const discordId = await getDiscordId(channel.channelId, steamUser);
 
   const userStr = discordId ? `<@${discordId}>` : steamUser;
-  const message = getRandomTurnNotifcation(gameName, userStr);
-  postMessage(channel.channelId, message);
+  const gamePrefix = `${gameName}: `;
+  const message = getRandomTurnNotification(userStr);
+  postMessage(channel.channelId, gamePrefix + message);
   return response.send("");
 }
 
-function getRandomTurnNotifcation(game, user) {
+function getRandomTurnNotification(user) {
   const index = Math.floor(Math.random() * 17); // Random # from 0 to 16.
   switch (index) {
     case 0:
-      return `${game} : ${user} it's your turn`;
+      return `${user} it's your turn`;
     case 1:
-      return `${game} : you're up ${user}`;
+      return `you're up ${user}`;
     case 2:
-      return `${game} : go ahead ${user}`;
+      return `go ahead ${user}`;
     case 3:
-      return `${game} : have a go ${user}`;
+      return `have a go ${user}`;
     case 4:
-      return `${game} : ${user}, time to take your turn`;
+      return `${user}, time to take your turn`;
     case 5:
-      return `${game} : uh oh, looks like it's time for ${user}`;
+      return `uh oh, looks like it's time for ${user}`;
     case 6:
-      return `${game} : ${user}, friendly ping`;
+      return `${user}, friendly ping`;
     case 7:
-      return `${game} : ${user}, go go go`;
+      return `${user}, go go go`;
     case 8:
-      return `${game} : has anyone seen ${user}? their turn to play.`;
+      return `has anyone seen ${user}? their turn to play.`;
     case 9:
-      return `${game} : good luck ${user}, it's your move`;
+      return `good luck ${user}, it's your move`;
     case 10:
-      return `${game} : take it away, ${user}`;
+      return `take it away, ${user}`;
     case 11:
-      return `${game} : tick tock it's ${user} o'clock`;
+      return `tick tock it's ${user} o'clock`;
     case 12:
-      return `${game} : brace yourselves, it's time for ${user}`;
+      return `brace yourselves, it's time for ${user}`;
     case 13:
-      return `${game} : time to shine, ${user}!`;
+      return `time to shine, ${user}!`;
     case 14:
-      return `${game} : attention ${user}, it is your turn. I repeat, it is your turn.`;
+      return `attention ${user}, it is your turn. I repeat, it is your turn.`;
     case 15:
-      return `${game} : it's go time, ${user}`;
+      return `it's go time, ${user}`;
     case 16:
-      return `${game} : no pressure, ${user}, but you're up`;
+      return `no pressure, ${user}, but you're up`;
   }
-  return "${game} : something went wrong, but anyways, it's ${user}'s turn.";
+  return "something went wrong, but anyways, it's ${user}'s turn.";
 }
 
 export { civTurnNotificationAction };
