@@ -16,16 +16,18 @@ async function civTurnNotificationAction(request, response) {
     return response.send("");
   }
 
+  const gameName = request.body.value1;
   const steamUser = request.body.value2;
   const discordId = await getDiscordId(channel.channelId, steamUser);
 
   const userStr = discordId ? `<@${discordId}>` : steamUser;
-  const message = getRandomTurnNotifcation(userStr);
-  postMessage(channel.channelId, message);
+  const gamePrefix = `${gameName}: `;
+  const message = getRandomTurnNotification(userStr);
+  postMessage(channel.channelId, gamePrefix + message);
   return response.send("");
 }
 
-function getRandomTurnNotifcation(user) {
+function getRandomTurnNotification(user) {
   const index = Math.floor(Math.random() * 17); // Random # from 0 to 16.
   switch (index) {
     case 0:
